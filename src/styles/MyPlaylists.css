@@ -1,0 +1,59 @@
+.playlists-page {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.page-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.playlists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.empty-playlists {
+    text-align: center;
+    padding: 60px 0;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+.empty-playlists p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.create-playlist-btn {
+    display: inline-block;
+    background-color: #6200ea;
+    color: white;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.create-playlist-btn:hover {
+    background-color: #5000d3;
+}
+
+@media (max-width: 768px) {
+    .playlists-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
