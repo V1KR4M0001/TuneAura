@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.page-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.page-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.home-container {
+    padding: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f8f9fa;
+}  
