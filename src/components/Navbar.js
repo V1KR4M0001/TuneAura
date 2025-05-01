@@ -1,33 +1,37 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import '../styles/Navbar.css';
 
-export function Navbar() {
-    const nav = document.createElement('nav');
-    nav.className = 'navbar';
+const Navbar = () => {
+    return (
+        <motion.nav
+            className="navbar"
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ type: 'spring', stiffness: 120 }}
+        >
+            <div className="logo">
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                >
+                    🎵 Emotionify
+                </motion.div>
+            </div>
+            <ul className="nav-links">
+                <motion.li whileHover={{ scale: 1.1 }}>
+                    <Link to="/">Home</Link>
+                </motion.li>
+                <motion.li whileHover={{ scale: 1.1 }}>
+                    <Link to="/generate">Generate</Link>
+                </motion.li>
+                <motion.li whileHover={{ scale: 1.1 }}>
+                    <Link to="/playlists">My Playlists</Link>
+                </motion.li>
+            </ul>
+        </motion.nav>
+    );
+};
 
-    const logo = document.createElement('div');
-    logo.className = 'logo';
-    logo.innerText = '🎵 Emotionify';
-
-    const menu = document.createElement('ul');
-    menu.className = 'nav-links';
-
-    const links = [
-        { name: 'Home', path: '/' },
-        { name: 'Generate', path: '/generate' },
-        { name: 'My Playlists', path: '/playlists' }
-    ];
-
-    links.forEach(link => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = link.path;
-        a.innerText = link.name;
-        li.appendChild(a);
-        menu.appendChild(li);
-    });
-
-    nav.appendChild(logo);
-    nav.appendChild(menu);
-
-    return nav;
-}
+export default Navbar;

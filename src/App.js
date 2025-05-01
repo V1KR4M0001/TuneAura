@@ -1,24 +1,53 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Generate from './pages/Generate';
+import MyPlaylists from './pages/MyPlaylists';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
+  const [playlists, setPlaylists] = useState([]);
+
+  const addPlaylist = (playlist) => {
+    setPlaylists([...playlists, playlist]);
+  };
+
+  const deletePlaylist = (id) => {
+    setPlaylists(playlists.filter(playlist => playlist.id !== id));
+  };
+
+  const renamePlaylist = (id, newName) => {
+    setPlaylists(playlists.map(playlist => 
+      playlist.id === id ? {...playlist, name: newName} : playlist
+    ));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <main className="container">
+          <Routes>
+            <Route path="/" element={<Home playlists={playlists} />} />
+            <Route path="/generate" element={<Generate addPlaylist={addPlaylist} />} />
+            <Route 
+              path="/playlists" 
+              element={
+                <MyPlaylists 
+                  playlists={playlists} 
+                  onDelete={deletePlaylist} 
+                  onRename={renamePlaylist}
+                />
+              } 
+            />
+          </Routes>
+        </main>
+        <ToastContainer position="bottom-right" autoClose={3000} />
+      </div>
+    </Router>
   );
 }
 

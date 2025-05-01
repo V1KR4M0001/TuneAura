@@ -1,13 +1,14 @@
-import { Generate } from './pages/Generate.js';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import './styles/global.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root');
-  if (root) {
-    const app = Generate();
-    root.innerHTML = '';    
-    root.appendChild(app);  
-  } else {
-    console.error('Root element not found!');
-  }
-});
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals();
