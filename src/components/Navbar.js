@@ -40,7 +40,7 @@ const Navbar = () => {
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                 >
-                    🎵 Emotionify
+                    🎵 TuneAura
                 </motion.div>
             </div>
 
